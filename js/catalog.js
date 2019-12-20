@@ -3,7 +3,7 @@
 'use strict';
 
 // Set up an empty cart for use on this page.
-// var cart = new Cart([]);
+var cart = new Cart([]);
 var total = parseInt();
 
 // On screen load, we call this method to put all of the busmall options
@@ -28,10 +28,10 @@ populateForm();
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
-
+  event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
-  cart.saveToLocalStorage();
+  // cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
 
@@ -39,13 +39,15 @@ function handleSubmit(event) {
 
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
-  // TODO: suss out the item picked from the select list
-  // TODO: get the quantity
+
+  var item = document.getElementById('items').value;
+  var quantity = document.getElementById('quantity').value;
+  cart.addItem(item, quantity);
   // TODO: using those, add one item to the Cart
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() { }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
